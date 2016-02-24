@@ -1,0 +1,60 @@
+<div class='row'>
+  <div class='col-xs-12'>
+    <h2>Registration Form</h2>
+    <form [ngFormModel]="registrationForm" (ngSubmit)="registrationForm.valid && submitRegistration(registrationForm.value)" novalidate>
+      
+      <fieldset class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="text" class="form-control" placeholder="Date of Birth" #dob='ngForm' [ngFormControl]="registrationForm.controls['dob']">
+        <div class='error' *ngIf="dob.control.touched">
+          <div *ngIf="dob.control.hasError('required')">Date of birth is required.</div>
+        </div>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label for="e-mail">E-Mail</label>
+        <input type="email" class="form-control" placeholder="E-mail" #email='ngForm' [ngFormControl]="registrationForm.controls['email']">
+        <div class='error' *ngIf="email.control.touched">
+          <div *ngIf="email.control.hasError('required')">Email is required.</div>
+          <div *ngIf="email.control.hasError('invalidEmail')">Email is invalid.</div>
+        </div>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Password" minlength='6' #password='ngForm' [ngFormControl]="registrationForm.controls['password']">
+        <div class='error' *ngIf="password.control.touched">
+          <div *ngIf="password.control.hasError('required')">Password is required.</div>
+          <div *ngIf="password.control.hasError('minlength')">Password isn't long enough.</div>
+        </div>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" class="form-control" placeholder="Confirm Password" #confirmPassword='ngForm' [ngFormControl]="registrationForm.controls['confirmPassword']">
+        <div class='error' *ngIf="confirmPassword.control.touched">
+          <div *ngIf="registrationForm.hasError('mismatchedPasswords')">Passwords do not match.</div>
+        </div>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" class="form-control" placeholder="First Name" #firstName='ngForm' [ngFormControl]="registrationForm.controls['firstName']">
+        <div class='error' *ngIf='firstName.control.touched'>
+          <div *ngIf="firstName.control.hasError('required')">First name is required.</div>
+        </div>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" class="form-control" placeholder="Last Name" #lastName='ngForm' [ngFormControl]="registrationForm.controls['lastName']">
+        <div class='error' *ngIf='lastName.control.touched'>
+          <div *ngIf="lastName.control.hasError('required')">Last name is required.</div>
+        </div>
+      </fieldset>
+      
+      <button class='btn btn-primary' type='submit' [disabled]='!registrationForm.valid'>Submit Registration Form</button>
+    </form>
+    <pre>{{registrationForm.value | json}}</pre>
+  </div>
+</div>
