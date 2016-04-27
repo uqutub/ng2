@@ -1,9 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "angular2-treeMenu",
-=======
-  "name": "angular2-starter",
->>>>>>> a72163af3caa284db94d8d8ca1efaf831d88b7ce
+
   "version": "1.0.0",
   "scripts": {
     "tsc": "tsc",
